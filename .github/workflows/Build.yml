@@ -24,7 +24,7 @@ jobs:
       # Run Arch Docker container and execute the script
       - name: Run Bash script on Arch Docker container
         run: |
-          docker run --rm -v ${{ github.workspace }}:/workspace archlinux bash /workspace/script.sh
+          docker run --rm -v ${{ github.workspace }}:/workspace archlinux bash Build.sh
 
       # Collect all .pkg.tar.zst files and compress them
       - name: Find and compress .pkg.tar.zst files
@@ -39,7 +39,7 @@ jobs:
         with:
           files: packages.tar.gz
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.TOKEN }}
 
       # Upload the release assets
       - name: Upload release assets
